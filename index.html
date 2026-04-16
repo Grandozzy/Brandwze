@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Brandwze | Brand Design, Print & Digital Delivery in Ghana</title>
+  <meta name="description" content="Brandwze combines printing, brand identity, UI/UX design, and fast delivery for founders and businesses across Ghana."/>
+  <meta name="theme-color" content="#d4a017"/>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%230a0a0a'/><path d='M8 7h9c3 0 5.5 2.2 5.5 5s-2.5 5-5.5 5H8V7Z' fill='%23d4a017'/><path d='M8 17h10c3.3 0 6 2.5 6 5.5S21.3 28 18 28H8V17Z' fill='%23d4a017' opacity='.85'/></svg>"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <style>
+    :root{
+      --bg:#0a0a0a; --surface:#111; --surface2:#181818; --surface3:#1e1e1e;
+      --gold:#d4a017; --gold-hover:#e8b420; --gold-dim:rgba(212,160,23,.12); --gold-border:rgba(212,160,23,.25);
+      --text:#fff; --muted:#b0b0b0; --faint:#666;
+      --border:rgba(255,255,255,.09); --divider:rgba(255,255,255,.06);
+      --shadow:0 12px 40px rgba(0,0,0,.6);
+      --r:10px; --r-lg:16px; --r-full:999px;
+      --font-display:'Montserrat',sans-serif; --font-body:'Inter',sans-serif;
+      --w:1200px;
+    }
+    *,*::before,*::after{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--bg);color:var(--text);font-family:var(--font-body);font-size:1rem;line-height:1.65}
+    img{max-width:100%;display:block;border-radius:var(--r-lg)}
+    a{text-decoration:none;color:inherit}
+    button{cursor:pointer;font:inherit}
+    h1,h2,h3,h4{font-family:var(--font-display);line-height:1.1;margin:0}
+    p{margin:0 0 1rem;color:var(--muted);max-width:62ch}
+    .wrap{width:min(calc(100% - 2rem),var(--w));margin-inline:auto}
+
+    /* NAV */
+    .site-nav{position:sticky;top:0;z-index:100;background:rgba(10,10,10,.92);backdrop-filter:blur(16px);border-bottom:1px solid rgba(212,160,23,.12)}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:.9rem 0}
+    .brand{display:flex;align-items:center;gap:.7rem;font-family:var(--font-display);font-weight:800;font-size:1.1rem}
+    .brand-mark{width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,#d4a017,#f0c040);display:grid;place-items:center;flex-shrink:0}
+    .brand-mark svg{color:#0a0a0a}
+    .nav-links{display:flex;gap:1.75rem;align-items:center}
+    .nav-links a{font-size:.875rem;color:rgba(255,255,255,.65);font-weight:500;transition:color .15s;position:relative;padding-bottom:2px}
+    .nav-links a:hover,.nav-links a.active{color:#fff}
+    .nav-links a.active::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:2px;background:var(--gold);border-radius:2px}
+    .nav-cta{background:var(--gold);color:#0a0a0a;font-weight:700;padding:.55rem 1.1rem;border-radius:var(--r-full);font-size:.875rem;transition:background .15s}
+    .nav-cta:hover{background:var(--gold-hover)}
+    .menu-btn{display:none;background:transparent;border:1px solid var(--border);color:var(--text);padding:.55rem;border-radius:var(--r);line-height:0}
+    #nav-drawer{display:none;flex-direction:column;gap:.25rem;padding:1rem 1.5rem 1.5rem;background:#0d0d0d;border-bottom:1px solid var(--border)}
+    #nav-drawer.open{display:flex}
+    #nav-drawer a{padding:.65rem .5rem;font-size:.95rem;color:var(--muted);border-radius:var(--r);font-weight:500}
+    #nav-drawer a:hover,#nav-drawer a.active{color:#fff;background:var(--surface)}
+    @media(max-width:800px){.nav-links{display:none}.menu-btn{display:inline-flex}}
+
+    /* BUTTONS */
+    .btn{display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 1.4rem;border-radius:var(--r-full);font-weight:700;font-size:.9rem;border:1px solid transparent;transition:all .18s;line-height:1}
+    .btn-gold{background:var(--gold);color:#0a0a0a}.btn-gold:hover{background:var(--gold-hover);transform:translateY(-1px)}
+    .btn-outline{background:transparent;border-color:var(--border);color:var(--text)}.btn-outline:hover{border-color:var(--gold);color:var(--gold)}
+    .btn-sm{padding:.55rem 1rem;font-size:.8rem}
+
+    /* EYEBROW */
+    .eyebrow{font-size:.72rem;text-transform:uppercase;letter-spacing:.2em;color:var(--gold);font-weight:700;font-family:var(--font-display);margin-bottom:.6rem;display:block}
+
+    /* CARDS */
+    .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:1.75rem;transition:transform .2s,box-shadow .2s}
+    .card:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+    .card-icon{width:48px;height:48px;border-radius:12px;background:var(--gold-dim);border:1px solid var(--gold-border);display:grid;place-items:center;margin-bottom:1.25rem;color:var(--gold)}
+    .card h3{font-size:1.05rem;margin-bottom:.6rem;color:var(--text)}
+    .card p{font-size:.9rem;color:var(--muted);margin:0}
+
+    /* GRID */
+    .grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+    .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem}
+    @media(max-width:900px){.grid-3,.grid-4{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:600px){.grid-2,.grid-3,.grid-4{grid-template-columns:1fr}}
+
+    /* SECTIONS */
+    .section{padding:clamp(3.5rem,8vw,6rem) 0}
+    .section-sm{padding:clamp(2rem,5vw,3.5rem) 0}
+    .section-head{margin-bottom:clamp(2rem,4vw,3rem)}
+    .section-head h2{font-size:clamp(1.7rem,3vw,2.5rem);margin-bottom:.75rem}
+    .section-head h2::after{content:'';display:block;width:2.2rem;height:3px;background:var(--gold);margin-top:.55rem;border-radius:2px}
+    .bg-surface{background:var(--surface)}
+    .bg-surface2{background:var(--surface2)}
+
+    /* REVEAL */
+    .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s cubic-bezier(.22,1,.36,1),transform .6s cubic-bezier(.22,1,.36,1)}
+    .reveal.d1{transition-delay:.1s}.reveal.d2{transition-delay:.2s}.reveal.d3{transition-delay:.3s}
+    .reveal.visible{opacity:1;transform:none}
+
+    /* PILL */
+    .pill{display:inline-flex;align-items:center;gap:.35rem;padding:.4rem .8rem;border-radius:var(--r-full);background:var(--gold-dim);border:1px solid var(--gold-border);color:var(--gold);font-size:.78rem;font-weight:600}
+
+    /* IMAGE PANELS */
+    .img-cover{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:var(--r-lg)}
+    .img-square{width:100%;aspect-ratio:1;object-fit:cover;border-radius:var(--r-lg)}
+    .img-portrait{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:var(--r-lg)}
+
+    /* HERO */
+    .hero-img-wrap{position:relative;border-radius:var(--r-lg);overflow:hidden}
+    .hero-img-wrap img{width:100%;height:100%;object-fit:cover}
+    .hero-img-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(10,10,10,.6),transparent)}
+
+    /* DIVIDER */
+    hr.gold{border:none;border-top:1px solid var(--gold-border);margin:0}
+
+    /* LIST */
+    .check-list{list-style:none;padding:0;margin:0;display:grid;gap:.75rem}
+    .check-list li{display:flex;align-items:flex-start;gap:.7rem;color:var(--muted);font-size:.92rem}
+    .check-list li i{color:var(--gold);flex-shrink:0;margin-top:2px}
+
+    /* STAT */
+    .stat-num{font-family:var(--font-display);font-size:2.2rem;font-weight:800;color:var(--gold);line-height:1}
+    .stat-label{font-size:.85rem;color:var(--faint);margin-top:.25rem}
+
+    /* FOOTER */
+    footer{background:#000;border-top:1px solid rgba(212,160,23,.2);padding:3.5rem 0 2rem}
+    .footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:3rem;margin-bottom:2.5rem}
+    .footer-brand p{font-size:.9rem;color:var(--faint);margin-top:.75rem;max-width:30ch}
+    .footer-col h4{font-family:var(--font-display);font-size:.85rem;text-transform:uppercase;letter-spacing:.12em;color:var(--faint);margin-bottom:1rem}
+    .footer-col ul{list-style:none;padding:0;margin:0;display:grid;gap:.6rem}
+    .footer-col ul li a{font-size:.9rem;color:var(--muted)}.footer-col ul li a:hover{color:var(--gold)}
+    .footer-col .contact-item{display:flex;align-items:center;gap:.6rem;font-size:.9rem;color:var(--muted)}
+    .footer-col .contact-item i{color:var(--gold)}
+    .footer-bottom{border-top:1px solid var(--divider);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.5rem}
+    .footer-bottom p{font-size:.8rem;color:var(--faint);margin:0}
+    @media(max-width:700px){.footer-grid{grid-template-columns:1fr}}
+
+    /* WA FLOAT */
+    .wa-btn{position:fixed;right:1.25rem;bottom:1.25rem;z-index:200;background:#25D366;color:#fff;border:none;border-radius:var(--r-full);padding:.85rem 1.1rem;display:flex;align-items:center;gap:.6rem;font-weight:700;font-size:.88rem;box-shadow:0 8px 30px rgba(37,211,102,.35);transition:transform .2s}
+    .wa-btn:hover{transform:scale(1.05)}
+    .wa-btn span{display:none}
+    @media(min-width:600px){.wa-btn span{display:inline}}
+
+    /* FORM */
+    .form-field{display:grid;gap:.45rem}
+    .form-field label{font-size:.85rem;font-weight:600;color:var(--text)}
+    .form-field input,.form-field select,.form-field textarea{width:100%;padding:.8rem 1rem;background:var(--surface2);border:1px solid var(--border);border-radius:var(--r);color:var(--text);font:inherit;transition:border-color .15s}
+    .form-field input:focus,.form-field select:focus,.form-field textarea:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(212,160,23,.12)}
+    .form-field textarea{min-height:110px;resize:vertical}
+
+    /* FAQ */
+    .faq-item{border:1px solid var(--border);border-radius:var(--r);overflow:hidden;margin-bottom:.75rem}
+    .faq-item summary{padding:1.1rem 1.25rem;cursor:pointer;font-weight:600;display:flex;justify-content:space-between;align-items:center;list-style:none;font-family:var(--font-display);font-size:.95rem}
+    .faq-item summary::-webkit-details-marker{display:none}
+    .faq-item[open] summary{color:var(--gold);border-bottom:1px solid var(--border)}
+    .faq-item p{padding:1rem 1.25rem;margin:0;font-size:.9rem}
+  </style>
+</head><body>
+<nav class="site-nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="index.html">
+      <span class="brand-mark"><svg width="22" height="22" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 5h7.5c2.5 0 4.5 1.8 4.5 4s-2 4-4.5 4H6V5Z" fill="currentColor" opacity="0.9"/><path d="M6 13h8c2.8 0 5 2 5 4.5S16.8 22 14 22H6V13Z" fill="currentColor"/><path d="M17 9.5c1.5.5 3 1.8 3 3.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" opacity="0.7"/></svg></span>
+      <span>Brandwze</span>
+    </a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="print.html">Print & Quote</a>
+      <a href="blog.html">Insights</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div style="display:flex;gap:.5rem;align-items:center">
+      <a class="nav-cta" href="print.html">Get a quote</a>
+      <button class="menu-btn" aria-label="Menu" aria-expanded="false"><i data-lucide="menu" style="width:20px;height:20px"></i></button>
+    </div>
+  </div>
+  <div id="nav-drawer" class="wrap">
+    <a href="index.html">Home</a>
+    <a href="services.html">Services</a>
+    <a href="print.html">Print & Quote</a>
+    <a href="blog.html">Insights</a>
+    <a href="contact.html">Contact</a>
+    <a class="btn btn-gold" href="print.html" style="margin-top:.5rem;justify-content:center">Get a quote</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section style="padding:clamp(4rem,10vw,7rem) 0;position:relative;overflow:hidden">
+  <div style="position:absolute;inset:0;pointer-events:none">
+    <div style="position:absolute;top:-100px;left:-150px;width:600px;height:600px;background:radial-gradient(circle,rgba(212,160,23,.14),transparent 65%);filter:blur(30px)"></div>
+    <div style="position:absolute;bottom:0;right:-100px;width:400px;height:400px;background:radial-gradient(circle,rgba(212,160,23,.07),transparent 65%);filter:blur(40px)"></div>
+  </div>
+  <div class="wrap" style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,5rem);align-items:center">
+    <div class="reveal">
+      <span class="eyebrow">Accra · Ghana-wide</span>
+      <h1 style="font-size:clamp(2.2rem,5vw,3.6rem);margin-bottom:1.25rem;line-height:1.05">Your brand, <span style="color:var(--gold)">printed</span> and positioned to win.</h1>
+      <p style="font-size:1.1rem;color:var(--muted);margin-bottom:2rem;max-width:48ch">We combine <strong style="color:#fff">printing</strong>, <strong style="color:#fff">brand thinking</strong>, and <strong style="color:#fff">digital design</strong> so your business shows up with clarity, not just colour.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:.75rem;margin-bottom:2rem">
+        <span class="pill"><i data-lucide="zap" style="width:13px;height:13px"></i> 24–48hr turnaround</span>
+        <span class="pill"><i data-lucide="map-pin" style="width:13px;height:13px"></i> Accra to Takoradi</span>
+        <span class="pill"><i data-lucide="upload-cloud" style="width:13px;height:13px"></i> Upload your design</span>
+      </div>
+      <div style="display:flex;gap:.75rem;flex-wrap:wrap">
+        <a class="btn btn-gold" href="print.html"><i data-lucide="printer" style="width:16px;height:16px"></i> Start printing</a>
+        <a class="btn btn-outline" href="services.html">See all services</a>
+      </div>
+    </div>
+    <div class="reveal d2" style="position:relative">
+      <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=800&q=80&auto=format&fit=crop" alt="Professional brand design and print materials" class="img-cover" style="aspect-ratio:4/5"/>
+      <div style="position:absolute;bottom:-1rem;left:-1.5rem;background:var(--gold);border-radius:var(--r-lg);padding:1.1rem 1.4rem;box-shadow:var(--shadow)">
+        <div class="stat-num" style="font-size:1.6rem;color:#0a0a0a">100+</div>
+        <div style="font-size:.78rem;color:rgba(0,0,0,.7);font-weight:600;margin-top:.15rem">Jobs completed</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURE STRIP -->
+<section class="section-sm bg-surface">
+  <div class="wrap">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:1rem">
+      <div class="reveal" style="text-align:center;padding:1.5rem 1rem">
+        <div style="width:44px;height:44px;border-radius:50%;background:var(--gold-dim);border:1px solid var(--gold-border);display:grid;place-items:center;margin:0 auto 1rem;color:var(--gold)"><i data-lucide="printer" style="width:20px;height:20px"></i></div>
+        <h3 style="font-size:.95rem;margin-bottom:.35rem">Custom printing</h3>
+        <p style="font-size:.83rem;margin:0">Cards, flyers, banners, merch & more</p>
+      </div>
+      <div class="reveal d1" style="text-align:center;padding:1.5rem 1rem">
+        <div style="width:44px;height:44px;border-radius:50%;background:var(--gold-dim);border:1px solid var(--gold-border);display:grid;place-items:center;margin:0 auto 1rem;color:var(--gold)"><i data-lucide="palette" style="width:20px;height:20px"></i></div>
+        <h3 style="font-size:.95rem;margin-bottom:.35rem">Brand identity</h3>
+        <p style="font-size:.83rem;margin:0">Logo, positioning & visual systems</p>
+      </div>
+      <div class="reveal d2" style="text-align:center;padding:1.5rem 1rem">
+        <div style="width:44px;height:44px;border-radius:50%;background:var(--gold-dim);border:1px solid var(--gold-border);display:grid;place-items:center;margin:0 auto 1rem;color:var(--gold)"><i data-lucide="monitor" style="width:20px;height:20px"></i></div>
+        <h3 style="font-size:.95rem;margin-bottom:.35rem">UI/UX design</h3>
+        <p style="font-size:.83rem;margin:0">Apps, landing pages & web design</p>
+      </div>
+      <div class="reveal d3" style="text-align:center;padding:1.5rem 1rem">
+        <div style="width:44px;height:44px;border-radius:50%;background:var(--gold-dim);border:1px solid var(--gold-border);display:grid;place-items:center;margin:0 auto 1rem;color:var(--gold)"><i data-lucide="truck" style="width:20px;height:20px"></i></div>
+        <h3 style="font-size:.95rem;margin-bottom:.35rem">Fast delivery</h3>
+        <p style="font-size:.83rem;margin:0">Accra, Tema, Kumasi, Takoradi</p>
+      </div>
+      <div class="reveal d1" style="text-align:center;padding:1.5rem 1rem">
+        <div style="width:44px;height:44px;border-radius:50%;background:var(--gold-dim);border:1px solid var(--gold-border);display:grid;place-items:center;margin:0 auto 1rem;color:var(--gold)"><i data-lucide="share-2" style="width:20px;height:20px"></i></div>
+        <h3 style="font-size:.95rem;margin-bottom:.35rem">Social media</h3>
+        <p style="font-size:.83rem;margin:0">Content, scheduling & management</p>
+      </div>
+      <div class="reveal d2" style="text-align:center;padding:1.5rem 1rem">
+        <div style="width:44px;height:44px;border-radius:50%;background:var(--gold-dim);border:1px solid var(--gold-border);display:grid;place-items:center;margin:0 auto 1rem;color:var(--gold)"><i data-lucide="clipboard-list" style="width:20px;height:20px"></i></div>
+        <h3 style="font-size:.95rem;margin-bottom:.35rem">Surveys & forms</h3>
+        <p style="font-size:.83rem;margin:0">Digital surveys, lead & marketing forms</p>
+      </div>
+      <div class="reveal d3" style="text-align:center;padding:1.5rem 1rem">
+        <div style="width:44px;height:44px;border-radius:50%;background:var(--gold-dim);border:1px solid var(--gold-border);display:grid;place-items:center;margin:0 auto 1rem;color:var(--gold)"><i data-lucide="layout" style="width:20px;height:20px"></i></div>
+        <h3 style="font-size:.95rem;margin-bottom:.35rem">Landing pages</h3>
+        <p style="font-size:.83rem;margin:0">Launch & campaign pages that convert</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT / STORY -->
+<section class="section">
+  <div class="wrap" style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,6vw,5rem);align-items:center">
+    <div class="reveal" style="position:relative">
+      <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80&auto=format&fit=crop" alt="Design studio workspace in Accra" class="img-cover" style="aspect-ratio:4/5"/>
+      <div style="position:absolute;top:1.5rem;right:-1.5rem;background:var(--surface);border:1px solid var(--gold-border);border-radius:var(--r-lg);padding:1.1rem 1.4rem">
+        <div class="stat-num">2024</div>
+        <div class="stat-label">Studio founded</div>
+      </div>
+    </div>
+    <div class="reveal d1">
+      <span class="eyebrow">Our story</span>
+      <h2 style="font-size:clamp(1.6rem,2.8vw,2.2rem);margin-bottom:1.25rem">We ask "why?" before we touch a file.</h2>
+      <p style="font-size:1rem;margin-bottom:1rem">Most print shops print what you give them. We do things differently. Before we produce anything, we ask what you are trying to achieve, then we design and deliver with that goal in mind.</p>
+      <p>We're based in Accra and work with founders, churches, events teams, startups, and established SMEs across Ghana.</p>
+      <div style="display:flex;gap:2.5rem;margin:2rem 0;flex-wrap:wrap">
+        <div><div class="stat-num">100+</div><div class="stat-label">Jobs completed</div></div>
+        <div><div class="stat-num">4</div><div class="stat-label">Cities covered</div></div>
+        <div><div class="stat-num">2yr</div><div class="stat-label">In business</div></div>
+      </div>
+      <a class="btn btn-outline" href="services.html">How we work <i data-lucide="arrow-right" style="width:15px;height:15px"></i></a>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES OVERVIEW -->
+<section class="section bg-surface">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">What we do</span>
+      <h2>One studio. Print, brand, and digital.</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem">
+      <div class="card reveal">
+        <div class="card-icon"><i data-lucide="printer" style="width:22px;height:22px"></i></div>
+        <h3>Printing & production</h3>
+        <p>We produce business cards, flyers, banners, posters, t-shirts, mugs, and branded merchandise, with proofing and delivery included.</p>
+        <a href="services.html#print" style="display:inline-flex;align-items:center;gap:.35rem;color:var(--gold);font-size:.88rem;font-weight:600;margin-top:1rem">View print services <i data-lucide="arrow-right" style="width:14px;height:14px"></i></a>
+      </div>
+      <div class="card reveal d1">
+        <div class="card-icon"><i data-lucide="layers" style="width:22px;height:22px"></i></div>
+        <h3>Brand identity</h3>
+        <p>We handle logo direction, visual systems, messaging, and positioning so your brand looks consistent and credible everywhere.</p>
+        <a href="services.html#brand" style="display:inline-flex;align-items:center;gap:.35rem;color:var(--gold);font-size:.88rem;font-weight:600;margin-top:1rem">Explore brand services <i data-lucide="arrow-right" style="width:14px;height:14px"></i></a>
+      </div>
+      <div class="card reveal d2">
+        <div class="card-icon"><i data-lucide="monitor" style="width:22px;height:22px"></i></div>
+        <h3>Digital & UI/UX</h3>
+        <p>We design landing pages, app screens, forms, surveys, and web interfaces that convert visitors, not just impress them.</p>
+        <a href="services.html#digital" style="display:inline-flex;align-items:center;gap:.35rem;color:var(--gold);font-size:.88rem;font-weight:600;margin-top:1rem">See digital services <i data-lucide="arrow-right" style="width:14px;height:14px"></i></a>
+      </div>
+      <div class="card reveal">
+        <div class="card-icon"><i data-lucide="share-2" style="width:22px;height:22px"></i></div>
+        <h3>Social media management</h3>
+        <p>We handle content creation, scheduling, and account management so your brand stays active and consistent online.</p>
+        <a href="services.html#social" style="display:inline-flex;align-items:center;gap:.35rem;color:var(--gold);font-size:.88rem;font-weight:600;margin-top:1rem">See social services <i data-lucide="arrow-right" style="width:14px;height:14px"></i></a>
+      </div>
+      <div class="card reveal d1">
+        <div class="card-icon"><i data-lucide="clipboard-list" style="width:22px;height:22px"></i></div>
+        <h3>Digital surveys</h3>
+        <p>We build custom surveys for companies covering customer feedback, research, event registration, and onboarding flows.</p>
+        <a href="services.html#surveys" style="display:inline-flex;align-items:center;gap:.35rem;color:var(--gold);font-size:.88rem;font-weight:600;margin-top:1rem">See survey services <i data-lucide="arrow-right" style="width:14px;height:14px"></i></a>
+      </div>
+      <div class="card reveal d2">
+        <div class="card-icon"><i data-lucide="layout" style="width:22px;height:22px"></i></div>
+        <h3>Landing pages & forms</h3>
+        <p>We design, build, and set up conversion-focused landing pages and marketing forms so your leads come in automatically.</p>
+        <a href="services.html#forms" style="display:inline-flex;align-items:center;gap:.35rem;color:var(--gold);font-size:.88rem;font-weight:600;margin-top:1rem">See landing page services <i data-lucide="arrow-right" style="width:14px;height:14px"></i></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOCIAL PROOF / TESTIMONIALS -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">What clients say</span>
+      <h2>Results that speak for themselves</h2>
+    </div>
+    <div class="grid-3">
+      <blockquote class="card reveal" style="border-left:3px solid var(--gold)">
+        <p style="font-size:1rem;font-style:italic;color:var(--text);margin-bottom:1rem">"We came for flyer printing and ended up fixing our whole campaign message. The difference was clarity."</p>
+        <div style="display:flex;align-items:center;gap:.7rem">
+          <div style="width:36px;height:36px;border-radius:50%;background:var(--gold-dim);border:1px solid var(--gold-border);display:grid;place-items:center;color:var(--gold);flex-shrink:0"><i data-lucide="user" style="width:16px;height:16px"></i></div>
+          <div><div style="font-size:.88rem;font-weight:600">SME founder</div><div style="font-size:.78rem;color:var(--faint)">Accra</div></div>
+        </div>
+      </blockquote>
+      <blockquote class="card reveal d1" style="border-left:3px solid var(--gold)">
+        <p style="font-size:1rem;font-style:italic;color:var(--text);margin-bottom:1rem">"Modern process, great proofing, faster turnaround than we expected. Communication was very easy."</p>
+        <div style="display:flex;align-items:center;gap:.7rem">
+          <div style="width:36px;height:36px;border-radius:50%;background:var(--gold-dim);border:1px solid var(--gold-border);display:grid;place-items:center;color:var(--gold);flex-shrink:0"><i data-lucide="user" style="width:16px;height:16px"></i></div>
+          <div><div style="font-size:.88rem;font-weight:600">Event organizer</div><div style="font-size:.78rem;color:var(--faint)">East Legon</div></div>
+        </div>
+      </blockquote>
+      <blockquote class="card reveal d2" style="border-left:3px solid var(--gold)">
+        <p style="font-size:1rem;font-style:italic;color:var(--text);margin-bottom:1rem">"They explained options we had not considered, including forms and landing pages, not just printing. It was invaluable."</p>
+        <div style="display:flex;align-items:center;gap:.7rem">
+          <div style="width:36px;height:36px;border-radius:50%;background:var(--gold-dim);border:1px solid var(--gold-border);display:grid;place-items:center;color:var(--gold);flex-shrink:0"><i data-lucide="user" style="width:16px;height:16px"></i></div>
+          <div><div style="font-size:.88rem;font-weight:600">Startup team</div><div style="font-size:.78rem;color:var(--faint)">Ghana</div></div>
+        </div>
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- GOLD CTA BAND -->
+
+<!-- TOOLS STRIP (homepage) -->
+<section class="section-sm" style="border-top:1px solid var(--divider)">
+  <div class="wrap">
+    <p style="font-size:.72rem;text-transform:uppercase;letter-spacing:.2em;color:var(--faint);font-weight:700;text-align:center;margin-bottom:1.5rem;font-family:var(--font-display)" class="reveal">Platforms and tools we work with</p>
+    <div style="display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:1.5rem" class="reveal">
+
+      <!-- Canva pill -->
+      <div style="display:flex;align-items:center;gap:.55rem;padding:.55rem 1rem;background:var(--surface);border:1px solid var(--border);border-radius:var(--r-full)">
+        <svg viewBox="0 0 24 24" style="width:18px;height:18px;flex-shrink:0"><rect width="24" height="24" rx="5" fill="#00C4B4"/><path d="M12 3.5c-4.7 0-8.5 3.8-8.5 8.5s3.8 8.5 8.5 8.5c2 0 3.8-.7 5.3-1.8l-1.8-1.8c-1 .8-2.2 1.2-3.5 1.2c-3.3 0-6-2.7-6-6s2.7-6 6-6c1.5 0 2.8.5 3.8 1.4l1.8-1.8C16.2 4.3 14.2 3.5 12 3.5z" fill="white"/></svg>
+        <span style="font-size:.82rem;font-weight:600">Canva</span>
+      </div>
+
+      <!-- Figma pill -->
+      <div style="display:flex;align-items:center;gap:.55rem;padding:.55rem 1rem;background:var(--surface);border:1px solid var(--border);border-radius:var(--r-full)">
+        <svg viewBox="0 0 24 24" style="width:18px;height:18px;flex-shrink:0"><rect width="24" height="24" rx="5" fill="#1e1e1e"/><circle cx="9" cy="9" r="3.5" fill="#FF7262"/><circle cx="15" cy="9" r="3.5" fill="#1ABCFE"/><circle cx="9" cy="15" r="3.5" fill="#0ACF83"/><circle cx="15" cy="15" r="3.5" fill="#A259FF"/></svg>
+        <span style="font-size:.82rem;font-weight:600">Figma</span>
+      </div>
+
+      <!-- Adobe pill -->
+      <div style="display:flex;align-items:center;gap:.55rem;padding:.55rem 1rem;background:var(--surface);border:1px solid var(--border);border-radius:var(--r-full)">
+        <svg viewBox="0 0 24 24" style="width:18px;height:18px;flex-shrink:0"><rect width="24" height="24" rx="5" fill="#FF2600"/><path d="M7 18L10.5 8h2L9 18H7z" fill="white"/><path d="M14 8L17.5 18h-2L14.5 14.5h-3L10.5 18H8.5L12 8h2zm-2.5 5.5h2.2L12.5 9.8l-1 3.7z" fill="white"/></svg>
+        <span style="font-size:.82rem;font-weight:600">Adobe</span>
+      </div>
+
+      <!-- Google Forms pill -->
+      <div style="display:flex;align-items:center;gap:.55rem;padding:.55rem 1rem;background:var(--surface);border:1px solid var(--border);border-radius:var(--r-full)">
+        <svg viewBox="0 0 24 24" style="width:18px;height:18px;flex-shrink:0"><rect width="24" height="24" rx="5" fill="#6749C7"/><rect x="6" y="6" width="12" height="12" rx="2" fill="white"/><rect x="8" y="9" width="8" height="2" rx="1" fill="#6749C7"/><rect x="8" y="12" width="8" height="2" rx="1" fill="#6749C7" opacity=".5"/><rect x="8" y="15" width="5" height="2" rx="1" fill="#6749C7" opacity=".3"/></svg>
+        <span style="font-size:.82rem;font-weight:600">Google Forms</span>
+      </div>
+
+      <!-- Typeform pill -->
+      <div style="display:flex;align-items:center;gap:.55rem;padding:.55rem 1rem;background:var(--surface);border:1px solid var(--border);border-radius:var(--r-full)">
+        <svg viewBox="0 0 24 24" style="width:18px;height:18px;flex-shrink:0"><rect width="24" height="24" rx="5" fill="#FF6E3C"/><rect x="5" y="11" width="14" height="3" rx="1.5" fill="white"/><rect x="5" y="7" width="10" height="3" rx="1.5" fill="white" opacity=".6"/><rect x="5" y="15" width="7" height="3" rx="1.5" fill="white" opacity=".4"/></svg>
+        <span style="font-size:.82rem;font-weight:600">Typeform</span>
+      </div>
+
+      <!-- Zapier pill -->
+      <div style="display:flex;align-items:center;gap:.55rem;padding:.55rem 1rem;background:var(--surface);border:1px solid var(--border);border-radius:var(--r-full)">
+        <svg viewBox="0 0 24 24" style="width:18px;height:18px;flex-shrink:0"><rect width="24" height="24" rx="5" fill="#FF4A00"/><path d="M12 4l2 6h6l-5 3.5 2 6-5-3.5-5 3.5 2-6L4 10h6z" fill="white"/></svg>
+        <span style="font-size:.82rem;font-weight:600">Zapier</span>
+      </div>
+
+      <!-- MailerLite pill -->
+      <div style="display:flex;align-items:center;gap:.55rem;padding:.55rem 1rem;background:var(--surface);border:1px solid var(--border);border-radius:var(--r-full)">
+        <svg viewBox="0 0 24 24" style="width:18px;height:18px;flex-shrink:0"><rect width="24" height="24" rx="5" fill="#09C46D"/><rect x="4" y="8" width="16" height="2.5" rx="1" fill="white"/><rect x="4" y="12" width="16" height="2.5" rx="1" fill="white" opacity=".6"/><rect x="4" y="16" width="10" height="2.5" rx="1" fill="white" opacity=".4"/></svg>
+        <span style="font-size:.82rem;font-weight:600">MailerLite</span>
+      </div>
+
+      <a href="services.html#tools" style="font-size:.82rem;color:var(--gold);font-weight:600;display:flex;align-items:center;gap:.3rem">See all tools <i data-lucide="arrow-right" style="width:13px;height:13px"></i></a>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--gold);padding:clamp(2.5rem,6vw,4rem) 0">
+  <div class="wrap reveal" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1.5rem">
+    <div>
+      <p style="font-family:var(--font-display);font-size:clamp(1.3rem,2.5vw,1.9rem);font-weight:800;color:#0a0a0a;margin:0;line-height:1.2">Ready to make your brand impossible to ignore?</p>
+      <p style="color:rgba(0,0,0,.6);margin:.5rem 0 0;font-size:.95rem">Upload your design, start a quote, or talk to us on WhatsApp.</p>
+    </div>
+    <div style="display:flex;gap:.75rem;flex-wrap:wrap">
+      <a class="btn" href="print.html" style="background:#0a0a0a;color:#fff">Start a quote</a>
+      <a class="btn" href="contact.html" style="background:rgba(0,0,0,.15);color:#0a0a0a;border:1px solid rgba(0,0,0,.2)">Get in touch</a>
+    </div>
+  </div>
+</section>
+
+<a class="wa-btn" href="https://wa.me/233596905337?text=Hello%20Brandwze%2C%20I%20would%20like%20a%20quote" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <i data-lucide="message-circle" style="width:20px;height:20px;flex-shrink:0"></i>
+  <span>WhatsApp us</span>
+</a><footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="index.html" style="margin-bottom:1rem;display:inline-flex">
+          <span class="brand-mark" style="width:34px;height:34px;border-radius:9px"><svg width="18" height="18" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 5h7.5c2.5 0 4.5 1.8 4.5 4s-2 4-4.5 4H6V5Z" fill="currentColor" opacity="0.9"/><path d="M6 13h8c2.8 0 5 2 5 4.5S16.8 22 14 22H6V13Z" fill="currentColor"/><path d="M17 9.5c1.5.5 3 1.8 3 3.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" opacity="0.7"/></svg></span>
+          <span style="margin-left:.6rem;font-family:var(--font-display);font-weight:800">Brandwze</span>
+        </a>
+        <p>Printing, brand identity, UI/UX design, and digital delivery for businesses across Ghana.</p>
+        <p style="font-size:.8rem;margin-top:.5rem">Lashibi FM, Community 18, Spintex Road, Accra</p>
+      </div>
+      <div class="footer-col">
+        <h4>Pages</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="print.html">Print &amp; Quote</a></li>
+          <li><a href="blog.html">Insights</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Reach us</h4>
+        <ul>
+          <li><span class="contact-item"><i data-lucide="phone" style="width:15px;height:15px"></i>+233 596 905 337</span></li>
+          <li><span class="contact-item"><i data-lucide="mail" style="width:15px;height:15px"></i>hello@brandwze.com</span></li>
+          <li><span class="contact-item"><i data-lucide="clock" style="width:15px;height:15px"></i>Mon–Sat, 9am–5pm</span></li>
+          <li><span class="contact-item"><i data-lucide="map-pin" style="width:15px;height:15px"></i>Accra · Tema · Kumasi · Takoradi</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Brandwze. All rights reserved.</p>
+      <p>Printing · Branding · UI/UX · Ghana</p>
+    </div>
+  </div>
+</footer>
+<style>@media(max-width:700px){.wrap>div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important}}</style>
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<script>
+(function(){
+  if(typeof lucide !== 'undefined') lucide.createIcons();
+  // Scroll reveal
+  const io = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}});
+  },{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+  // Mobile nav
+  const btn=document.querySelector('.menu-btn'), drawer=document.getElementById('nav-drawer');
+  if(btn&&drawer){btn.addEventListener('click',()=>{const o=drawer.classList.toggle('open');btn.setAttribute('aria-expanded',String(o));});drawer.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>drawer.classList.remove('open')));}
+  // Active nav
+  const page=location.pathname.split('/').pop()||'index.html';
+  document.querySelectorAll('.nav-links a,#nav-drawer a').forEach(a=>{if(a.getAttribute('href')===page){a.classList.add('active');}});
+})();
+</script>
+</body></html>

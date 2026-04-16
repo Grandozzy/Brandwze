@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Contact | Brandwze. Get a Quote or Talk to Us</title>
+  <meta name="description" content="Contact Brandwze for printing, brand identity, or UI/UX design. WhatsApp, phone, email, or use the contact form."/>
+  <meta name="theme-color" content="#d4a017"/>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%230a0a0a'/><path d='M8 7h9c3 0 5.5 2.2 5.5 5s-2.5 5-5.5 5H8V7Z' fill='%23d4a017'/><path d='M8 17h10c3.3 0 6 2.5 6 5.5S21.3 28 18 28H8V17Z' fill='%23d4a017' opacity='.85'/></svg>"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <style>
+    :root{
+      --bg:#0a0a0a; --surface:#111; --surface2:#181818; --surface3:#1e1e1e;
+      --gold:#d4a017; --gold-hover:#e8b420; --gold-dim:rgba(212,160,23,.12); --gold-border:rgba(212,160,23,.25);
+      --text:#fff; --muted:#b0b0b0; --faint:#666;
+      --border:rgba(255,255,255,.09); --divider:rgba(255,255,255,.06);
+      --shadow:0 12px 40px rgba(0,0,0,.6);
+      --r:10px; --r-lg:16px; --r-full:999px;
+      --font-display:'Montserrat',sans-serif; --font-body:'Inter',sans-serif;
+      --w:1200px;
+    }
+    *,*::before,*::after{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--bg);color:var(--text);font-family:var(--font-body);font-size:1rem;line-height:1.65}
+    img{max-width:100%;display:block;border-radius:var(--r-lg)}
+    a{text-decoration:none;color:inherit}
+    button{cursor:pointer;font:inherit}
+    h1,h2,h3,h4{font-family:var(--font-display);line-height:1.1;margin:0}
+    p{margin:0 0 1rem;color:var(--muted);max-width:62ch}
+    .wrap{width:min(calc(100% - 2rem),var(--w));margin-inline:auto}
+
+    /* NAV */
+    .site-nav{position:sticky;top:0;z-index:100;background:rgba(10,10,10,.92);backdrop-filter:blur(16px);border-bottom:1px solid rgba(212,160,23,.12)}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:.9rem 0}
+    .brand{display:flex;align-items:center;gap:.7rem;font-family:var(--font-display);font-weight:800;font-size:1.1rem}
+    .brand-mark{width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,#d4a017,#f0c040);display:grid;place-items:center;flex-shrink:0}
+    .brand-mark svg{color:#0a0a0a}
+    .nav-links{display:flex;gap:1.75rem;align-items:center}
+    .nav-links a{font-size:.875rem;color:rgba(255,255,255,.65);font-weight:500;transition:color .15s;position:relative;padding-bottom:2px}
+    .nav-links a:hover,.nav-links a.active{color:#fff}
+    .nav-links a.active::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:2px;background:var(--gold);border-radius:2px}
+    .nav-cta{background:var(--gold);color:#0a0a0a;font-weight:700;padding:.55rem 1.1rem;border-radius:var(--r-full);font-size:.875rem;transition:background .15s}
+    .nav-cta:hover{background:var(--gold-hover)}
+    .menu-btn{display:none;background:transparent;border:1px solid var(--border);color:var(--text);padding:.55rem;border-radius:var(--r);line-height:0}
+    #nav-drawer{display:none;flex-direction:column;gap:.25rem;padding:1rem 1.5rem 1.5rem;background:#0d0d0d;border-bottom:1px solid var(--border)}
+    #nav-drawer.open{display:flex}
+    #nav-drawer a{padding:.65rem .5rem;font-size:.95rem;color:var(--muted);border-radius:var(--r);font-weight:500}
+    #nav-drawer a:hover,#nav-drawer a.active{color:#fff;background:var(--surface)}
+    @media(max-width:800px){.nav-links{display:none}.menu-btn{display:inline-flex}}
+
+    /* BUTTONS */
+    .btn{display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 1.4rem;border-radius:var(--r-full);font-weight:700;font-size:.9rem;border:1px solid transparent;transition:all .18s;line-height:1}
+    .btn-gold{background:var(--gold);color:#0a0a0a}.btn-gold:hover{background:var(--gold-hover);transform:translateY(-1px)}
+    .btn-outline{background:transparent;border-color:var(--border);color:var(--text)}.btn-outline:hover{border-color:var(--gold);color:var(--gold)}
+    .btn-sm{padding:.55rem 1rem;font-size:.8rem}
+
+    /* EYEBROW */
+    .eyebrow{font-size:.72rem;text-transform:uppercase;letter-spacing:.2em;color:var(--gold);font-weight:700;font-family:var(--font-display);margin-bottom:.6rem;display:block}
+
+    /* CARDS */
+    .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:1.75rem;transition:transform .2s,box-shadow .2s}
+    .card:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+    .card-icon{width:48px;height:48px;border-radius:12px;background:var(--gold-dim);border:1px solid var(--gold-border);display:grid;place-items:center;margin-bottom:1.25rem;color:var(--gold)}
+    .card h3{font-size:1.05rem;margin-bottom:.6rem;color:var(--text)}
+    .card p{font-size:.9rem;color:var(--muted);margin:0}
+
+    /* GRID */
+    .grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+    .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem}
+    @media(max-width:900px){.grid-3,.grid-4{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:600px){.grid-2,.grid-3,.grid-4{grid-template-columns:1fr}}
+
+    /* SECTIONS */
+    .section{padding:clamp(3.5rem,8vw,6rem) 0}
+    .section-sm{padding:clamp(2rem,5vw,3.5rem) 0}
+    .section-head{margin-bottom:clamp(2rem,4vw,3rem)}
+    .section-head h2{font-size:clamp(1.7rem,3vw,2.5rem);margin-bottom:.75rem}
+    .section-head h2::after{content:'';display:block;width:2.2rem;height:3px;background:var(--gold);margin-top:.55rem;border-radius:2px}
+    .bg-surface{background:var(--surface)}
+    .bg-surface2{background:var(--surface2)}
+
+    /* REVEAL */
+    .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s cubic-bezier(.22,1,.36,1),transform .6s cubic-bezier(.22,1,.36,1)}
+    .reveal.d1{transition-delay:.1s}.reveal.d2{transition-delay:.2s}.reveal.d3{transition-delay:.3s}
+    .reveal.visible{opacity:1;transform:none}
+
+    /* PILL */
+    .pill{display:inline-flex;align-items:center;gap:.35rem;padding:.4rem .8rem;border-radius:var(--r-full);background:var(--gold-dim);border:1px solid var(--gold-border);color:var(--gold);font-size:.78rem;font-weight:600}
+
+    /* IMAGE PANELS */
+    .img-cover{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:var(--r-lg)}
+    .img-square{width:100%;aspect-ratio:1;object-fit:cover;border-radius:var(--r-lg)}
+    .img-portrait{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:var(--r-lg)}
+
+    /* HERO */
+    .hero-img-wrap{position:relative;border-radius:var(--r-lg);overflow:hidden}
+    .hero-img-wrap img{width:100%;height:100%;object-fit:cover}
+    .hero-img-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(10,10,10,.6),transparent)}
+
+    /* DIVIDER */
+    hr.gold{border:none;border-top:1px solid var(--gold-border);margin:0}
+
+    /* LIST */
+    .check-list{list-style:none;padding:0;margin:0;display:grid;gap:.75rem}
+    .check-list li{display:flex;align-items:flex-start;gap:.7rem;color:var(--muted);font-size:.92rem}
+    .check-list li i{color:var(--gold);flex-shrink:0;margin-top:2px}
+
+    /* STAT */
+    .stat-num{font-family:var(--font-display);font-size:2.2rem;font-weight:800;color:var(--gold);line-height:1}
+    .stat-label{font-size:.85rem;color:var(--faint);margin-top:.25rem}
+
+    /* FOOTER */
+    footer{background:#000;border-top:1px solid rgba(212,160,23,.2);padding:3.5rem 0 2rem}
+    .footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:3rem;margin-bottom:2.5rem}
+    .footer-brand p{font-size:.9rem;color:var(--faint);margin-top:.75rem;max-width:30ch}
+    .footer-col h4{font-family:var(--font-display);font-size:.85rem;text-transform:uppercase;letter-spacing:.12em;color:var(--faint);margin-bottom:1rem}
+    .footer-col ul{list-style:none;padding:0;margin:0;display:grid;gap:.6rem}
+    .footer-col ul li a{font-size:.9rem;color:var(--muted)}.footer-col ul li a:hover{color:var(--gold)}
+    .footer-col .contact-item{display:flex;align-items:center;gap:.6rem;font-size:.9rem;color:var(--muted)}
+    .footer-col .contact-item i{color:var(--gold)}
+    .footer-bottom{border-top:1px solid var(--divider);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.5rem}
+    .footer-bottom p{font-size:.8rem;color:var(--faint);margin:0}
+    @media(max-width:700px){.footer-grid{grid-template-columns:1fr}}
+
+    /* WA FLOAT */
+    .wa-btn{position:fixed;right:1.25rem;bottom:1.25rem;z-index:200;background:#25D366;color:#fff;border:none;border-radius:var(--r-full);padding:.85rem 1.1rem;display:flex;align-items:center;gap:.6rem;font-weight:700;font-size:.88rem;box-shadow:0 8px 30px rgba(37,211,102,.35);transition:transform .2s}
+    .wa-btn:hover{transform:scale(1.05)}
+    .wa-btn span{display:none}
+    @media(min-width:600px){.wa-btn span{display:inline}}
+
+    /* FORM */
+    .form-field{display:grid;gap:.45rem}
+    .form-field label{font-size:.85rem;font-weight:600;color:var(--text)}
+    .form-field input,.form-field select,.form-field textarea{width:100%;padding:.8rem 1rem;background:var(--surface2);border:1px solid var(--border);border-radius:var(--r);color:var(--text);font:inherit;transition:border-color .15s}
+    .form-field input:focus,.form-field select:focus,.form-field textarea:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(212,160,23,.12)}
+    .form-field textarea{min-height:110px;resize:vertical}
+
+    /* FAQ */
+    .faq-item{border:1px solid var(--border);border-radius:var(--r);overflow:hidden;margin-bottom:.75rem}
+    .faq-item summary{padding:1.1rem 1.25rem;cursor:pointer;font-weight:600;display:flex;justify-content:space-between;align-items:center;list-style:none;font-family:var(--font-display);font-size:.95rem}
+    .faq-item summary::-webkit-details-marker{display:none}
+    .faq-item[open] summary{color:var(--gold);border-bottom:1px solid var(--border)}
+    .faq-item p{padding:1rem 1.25rem;margin:0;font-size:.9rem}
+  </style>
+</head><body>
+<nav class="site-nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="index.html">
+      <span class="brand-mark"><svg width="22" height="22" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 5h7.5c2.5 0 4.5 1.8 4.5 4s-2 4-4.5 4H6V5Z" fill="currentColor" opacity="0.9"/><path d="M6 13h8c2.8 0 5 2 5 4.5S16.8 22 14 22H6V13Z" fill="currentColor"/><path d="M17 9.5c1.5.5 3 1.8 3 3.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" opacity="0.7"/></svg></span>
+      <span>Brandwze</span>
+    </a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="print.html">Print & Quote</a>
+      <a href="blog.html">Insights</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div style="display:flex;gap:.5rem;align-items:center">
+      <a class="nav-cta" href="print.html">Get a quote</a>
+      <button class="menu-btn" aria-label="Menu" aria-expanded="false"><i data-lucide="menu" style="width:20px;height:20px"></i></button>
+    </div>
+  </div>
+  <div id="nav-drawer" class="wrap">
+    <a href="index.html">Home</a>
+    <a href="services.html">Services</a>
+    <a href="print.html">Print & Quote</a>
+    <a href="blog.html">Insights</a>
+    <a href="contact.html">Contact</a>
+    <a class="btn btn-gold" href="print.html" style="margin-top:.5rem;justify-content:center">Get a quote</a>
+  </div>
+</nav>
+
+<section style="padding:clamp(3rem,7vw,5rem) 0;border-bottom:1px solid var(--divider)">
+  <div class="wrap reveal">
+    <span class="eyebrow">Get in touch</span>
+    <h1 style="font-size:clamp(2rem,4.5vw,3rem);max-width:16ch;margin-bottom:1rem">Let's build something great together.</h1>
+    <p style="max-width:50ch">Tell us what you need, whether it is a print quote, a brand project, or digital work. We will respond the same day.</p>
+  </div>
+</section>
+
+<!-- CONTACT GRID -->
+<section class="section">
+  <div class="wrap">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,5rem);align-items:start">
+
+      <!-- LEFT: CONTACT DETAILS + MAP IMAGE -->
+      <div class="reveal">
+        <h2 style="font-size:1.5rem;margin-bottom:1.5rem">Reach us directly</h2>
+        <div style="display:grid;gap:1rem;margin-bottom:2rem">
+          <div style="display:flex;align-items:flex-start;gap:1rem;padding:1.1rem 1.25rem;background:var(--surface);border:1px solid var(--border);border-radius:var(--r)">
+            <div style="width:40px;height:40px;border-radius:10px;background:var(--gold-dim);border:1px solid var(--gold-border);display:grid;place-items:center;flex-shrink:0;color:var(--gold)"><i data-lucide="message-circle" style="width:18px;height:18px"></i></div>
+            <div>
+              <div style="font-size:.82rem;color:var(--faint);margin-bottom:.2rem">WhatsApp (fastest)</div>
+              <a href="https://wa.me/233596905337" style="font-weight:600;color:var(--text);font-size:.95rem">+233 596 905 337</a>
+            </div>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:1rem;padding:1.1rem 1.25rem;background:var(--surface);border:1px solid var(--border);border-radius:var(--r)">
+            <div style="width:40px;height:40px;border-radius:10px;background:var(--gold-dim);border:1px solid var(--gold-border);display:grid;place-items:center;flex-shrink:0;color:var(--gold)"><i data-lucide="phone" style="width:18px;height:18px"></i></div>
+            <div>
+              <div style="font-size:.82rem;color:var(--faint);margin-bottom:.2rem">Phone</div>
+              <span style="font-weight:600;font-size:.95rem">+233 559 055 404</span>
+            </div>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:1rem;padding:1.1rem 1.25rem;background:var(--surface);border:1px solid var(--border);border-radius:var(--r)">
+            <div style="width:40px;height:40px;border-radius:10px;background:var(--gold-dim);border:1px solid var(--gold-border);display:grid;place-items:center;flex-shrink:0;color:var(--gold)"><i data-lucide="mail" style="width:18px;height:18px"></i></div>
+            <div>
+              <div style="font-size:.82rem;color:var(--faint);margin-bottom:.2rem">Email</div>
+              <a href="mailto:hello@brandwze.com" style="font-weight:600;color:var(--text);font-size:.95rem">hello@brandwze.com</a>
+            </div>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:1rem;padding:1.1rem 1.25rem;background:var(--surface);border:1px solid var(--border);border-radius:var(--r)">
+            <div style="width:40px;height:40px;border-radius:10px;background:var(--gold-dim);border:1px solid var(--gold-border);display:grid;place-items:center;flex-shrink:0;color:var(--gold)"><i data-lucide="map-pin" style="width:18px;height:18px"></i></div>
+            <div>
+              <div style="font-size:.82rem;color:var(--faint);margin-bottom:.2rem">Studio location</div>
+              <span style="font-weight:600;font-size:.95rem">Lashibi FM, Community 18</span>
+              <div style="font-size:.85rem;color:var(--muted)">Nungua–Spintex Road, Accra</div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:1rem;padding:1.1rem 1.25rem;background:var(--surface);border:1px solid var(--border);border-radius:var(--r)">
+            <div style="width:40px;height:40px;border-radius:10px;background:var(--gold-dim);border:1px solid var(--gold-border);display:grid;place-items:center;flex-shrink:0;color:var(--gold)"><i data-lucide="clock" style="width:18px;height:18px"></i></div>
+            <div>
+              <div style="font-size:.82rem;color:var(--faint);margin-bottom:.2rem">Business hours</div>
+              <span style="font-weight:600;font-size:.95rem">Monday to Saturday, 9:00 AM to 5:00 PM</span>
+            </div>
+          </div>
+        </div>
+        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&q=80&auto=format&fit=crop" alt="Accra Ghana location" class="img-cover" style="aspect-ratio:16/9"/>
+      </div>
+
+      <!-- RIGHT: CONTACT FORM -->
+      <div class="reveal d1">
+        <h2 style="font-size:1.5rem;margin-bottom:1.5rem">Send us a message</h2>
+        <form id="contactForm" novalidate>
+          <div style="display:grid;gap:1rem;margin-bottom:1.25rem">
+            <div class="form-field">
+              <label>Your name *</label>
+              <input id="cf-name" type="text" name="name" placeholder="Full name" required/>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
+              <div class="form-field">
+                <label>Phone / WhatsApp *</label>
+                <input id="cf-phone" type="tel" name="phone" placeholder="+233..." required/>
+              </div>
+              <div class="form-field">
+                <label>Email</label>
+                <input id="cf-email" type="email" name="email" placeholder="Optional"/>
+              </div>
+            </div>
+            <div class="form-field">
+              <label>What do you need?</label>
+              <select id="cf-service" name="service">
+                <option>Custom printing</option>
+                <option>Brand identity project</option>
+                <option>UI/UX design</option>
+                <option>Social media management</option>
+                <option>Digital survey setup</option>
+                <option>Landing page design and setup</option>
+                <option>Marketing form design and setup</option>
+                <option>Other, I will explain below</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <label>Tell us more</label>
+              <textarea id="cf-message" name="message" placeholder="What are you working on? Any details on size, quantity, deadline, or budget help us respond faster..."></textarea>
+            </div>
+          </div>
+          <button id="cf-submit" class="btn btn-gold" type="submit" style="width:100%;justify-content:center;padding:1rem">
+            <i data-lucide="send" style="width:17px;height:17px"></i> Send message
+          </button>
+          <p id="formResult" style="margin-top:.75rem;font-size:.88rem;color:var(--gold);min-height:1.3rem;text-align:center"></p>
+        </form>
+
+        <script>
+        (function(){
+          var WA = '233596905337';
+          var FORMSPREE = 'https://formspree.io/f/xnjlpggr';
+
+          document.getElementById('contactForm').addEventListener('submit', async function(e){
+            e.preventDefault();
+            var btn = document.getElementById('cf-submit');
+            var result = document.getElementById('formResult');
+            var name    = document.getElementById('cf-name').value.trim();
+            var phone   = document.getElementById('cf-phone').value.trim();
+            var email   = document.getElementById('cf-email').value.trim();
+            var service = document.getElementById('cf-service').value;
+            var message = document.getElementById('cf-message').value.trim();
+
+            if(!name || !phone){ result.style.color='#ff6b6b'; result.textContent='Please enter your name and phone number.'; return; }
+
+            btn.disabled = true;
+            btn.textContent = 'Sending...';
+            result.style.color = 'var(--gold)';
+            result.textContent = '';
+
+            // 1. Send to Formspree
+            try {
+              await fetch(FORMSPREE, {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+                body: JSON.stringify({name:name, phone:phone, email:email||'Not provided', service:service, message:message||'No additional details'})
+              });
+            } catch(err) { /* fail silently — WhatsApp still opens */ }
+
+            // 2. Build WhatsApp message
+            var wa_text = 'Hello Brandwze! I have a new enquiry via the website.\n\n'
+              + 'Name: ' + name + '\n'
+              + 'Phone: ' + phone + '\n'
+              + (email ? 'Email: ' + email + '\n' : '')
+              + 'Service needed: ' + service + '\n'
+              + (message ? 'Details: ' + message : '');
+
+            // 3. Reset form
+            document.getElementById('contactForm').reset();
+            btn.disabled = false;
+            btn.innerHTML = '<i data-lucide="check" style="width:17px;height:17px"></i> Message sent!';
+            result.textContent = 'Sent successfully. Opening WhatsApp now so we can reply fast.';
+            if(typeof lucide !== 'undefined') lucide.createIcons();
+
+            // 4. Open WhatsApp after short delay
+            setTimeout(function(){
+              window.open('https://wa.me/' + WA + '?text=' + encodeURIComponent(wa_text), '_blank');
+              btn.innerHTML = '<i data-lucide="send" style="width:17px;height:17px"></i> Send message';
+              if(typeof lucide !== 'undefined') lucide.createIcons();
+            }, 800);
+          });
+        })();
+        </script>
+
+        <div style="margin-top:2rem;padding:1.25rem;background:var(--surface2);border:1px solid var(--border);border-radius:var(--r-lg)">
+          <p style="font-size:.88rem;margin:0;display:flex;align-items:flex-start;gap:.6rem"><i data-lucide="zap" style="width:16px;height:16px;color:var(--gold);flex-shrink:0;margin-top:2px"></i><span>For the fastest response, <strong>message us on WhatsApp</strong>. We are usually online and reply within minutes during business hours.</span></p>
+          <a class="btn" href="https://wa.me/233596905337?text=Hello%20Brandwze%2C%20I%20would%20like%20a%20quote" target="_blank" rel="noopener" style="background:#25D366;color:#fff;margin-top:.85rem;width:100%;justify-content:center">
+            <i data-lucide="message-circle" style="width:16px;height:16px"></i> Open WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section bg-surface">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">FAQ</span>
+      <h2>Common questions</h2>
+    </div>
+    <div style="max-width:700px">
+      <details class="faq-item reveal"><summary>Do you only work in Accra? <i data-lucide="chevron-down" style="width:16px;height:16px;color:var(--gold)"></i></summary><p>We deliver and fulfil orders across Accra, Tema, Kumasi, and Takoradi. Digital work is handled remotely anywhere in Ghana or beyond.</p></details>
+      <details class="faq-item reveal"><summary>Can you design my file before printing it? <i data-lucide="chevron-down" style="width:16px;height:16px;color:var(--gold)"></i></summary><p>Yes. We support layout, brand direction, print preparation, and digital proofing before final production. Add design review when submitting your request.</p></details>
+      <details class="faq-item reveal"><summary>Can I upload my own design? <i data-lucide="chevron-down" style="width:16px;height:16px;color:var(--gold)"></i></summary><p>Yes. The Print and Quote page is made exactly for this. Upload your file, select your specs, and submit. We will confirm and begin production.</p></details>
+      <details class="faq-item reveal"><summary>Do you design websites, apps, and forms? <i data-lucide="chevron-down" style="width:16px;height:16px;color:var(--gold)"></i></summary><p>Yes. UI/UX design, landing pages, surveys, forms, and digital brand touchpoints are all part of our services alongside print production.</p></details>
+      <details class="faq-item reveal"><summary>How fast is turnaround? <i data-lucide="chevron-down" style="width:16px;height:16px;color:var(--gold)"></i></summary><p>Standard is 3–5 business days. Rush jobs (24–48hr) are available for an additional fee. Tell us your deadline and we'll work around it.</p></details>
+    </div>
+  </div>
+</section>
+
+<a class="wa-btn" href="https://wa.me/233596905337?text=Hello%20Brandwze%2C%20I%20would%20like%20a%20quote" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <i data-lucide="message-circle" style="width:20px;height:20px;flex-shrink:0"></i>
+  <span>WhatsApp us</span>
+</a><footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="index.html" style="margin-bottom:1rem;display:inline-flex">
+          <span class="brand-mark" style="width:34px;height:34px;border-radius:9px"><svg width="18" height="18" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 5h7.5c2.5 0 4.5 1.8 4.5 4s-2 4-4.5 4H6V5Z" fill="currentColor" opacity="0.9"/><path d="M6 13h8c2.8 0 5 2 5 4.5S16.8 22 14 22H6V13Z" fill="currentColor"/><path d="M17 9.5c1.5.5 3 1.8 3 3.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" opacity="0.7"/></svg></span>
+          <span style="margin-left:.6rem;font-family:var(--font-display);font-weight:800">Brandwze</span>
+        </a>
+        <p>Printing, brand identity, UI/UX design, and digital delivery for businesses across Ghana.</p>
+        <p style="font-size:.8rem;margin-top:.5rem">Lashibi FM, Community 18, Spintex Road, Accra</p>
+      </div>
+      <div class="footer-col">
+        <h4>Pages</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="print.html">Print &amp; Quote</a></li>
+          <li><a href="blog.html">Insights</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Reach us</h4>
+        <ul>
+          <li><span class="contact-item"><i data-lucide="phone" style="width:15px;height:15px"></i>+233 596 905 337</span></li>
+          <li><span class="contact-item"><i data-lucide="mail" style="width:15px;height:15px"></i>hello@brandwze.com</span></li>
+          <li><span class="contact-item"><i data-lucide="clock" style="width:15px;height:15px"></i>Mon–Sat, 9am–5pm</span></li>
+          <li><span class="contact-item"><i data-lucide="map-pin" style="width:15px;height:15px"></i>Accra · Tema · Kumasi · Takoradi</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Brandwze. All rights reserved.</p>
+      <p>Printing · Branding · UI/UX · Ghana</p>
+    </div>
+  </div>
+</footer>
+<style>@media(max-width:700px){.wrap>div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important}}</style>
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<script>
+(function(){
+  if(typeof lucide !== 'undefined') lucide.createIcons();
+  // Scroll reveal
+  const io = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}});
+  },{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+  // Mobile nav
+  const btn=document.querySelector('.menu-btn'), drawer=document.getElementById('nav-drawer');
+  if(btn&&drawer){btn.addEventListener('click',()=>{const o=drawer.classList.toggle('open');btn.setAttribute('aria-expanded',String(o));});drawer.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>drawer.classList.remove('open')));}
+  // Active nav
+  const page=location.pathname.split('/').pop()||'index.html';
+  document.querySelectorAll('.nav-links a,#nav-drawer a').forEach(a=>{if(a.getAttribute('href')===page){a.classList.add('active');}});
+})();
+</script>
+</body></html>
