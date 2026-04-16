@@ -145,6 +145,115 @@
     .faq-item summary::-webkit-details-marker{display:none}
     .faq-item[open] summary{color:var(--gold);border-bottom:1px solid var(--border)}
     .faq-item p{padding:1rem 1.25rem;margin:0;font-size:.9rem}
+
+    /* ═══════════════════════════════════════
+       MOBILE-FIRST RESPONSIVE SYSTEM
+       Breakpoints: 480px / 700px / 900px
+    ═══════════════════════════════════════ */
+
+    /* Two-column layout used for hero, about, service pairs */
+    .cols-2{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,4.5rem);align-items:center}
+    .cols-2-wide{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,5rem);align-items:start}
+    .cols-cta{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1.5rem}
+
+    /* Responsive grid overrides */
+    @media(max-width:900px){
+      .grid-3,.grid-4{grid-template-columns:repeat(2,1fr)}
+      .cols-2,.cols-2-wide{grid-template-columns:1fr}
+      .cols-2 > *:first-child,.cols-2-wide > *:first-child{order:0}
+      /* Flip image-first layouts so text comes first on mobile */
+      .cols-2.img-first > *:first-child{order:1}
+      .cols-2.img-first > *:last-child{order:0}
+      .stat-row-3{grid-template-columns:repeat(2,1fr)!important}
+    }
+
+    @media(max-width:700px){
+      .grid-2,.grid-3,.grid-4{grid-template-columns:1fr}
+      .cols-2,.cols-2-wide{grid-template-columns:1fr;gap:2rem}
+      .footer-grid{grid-template-columns:1fr!important}
+      .cols-cta{flex-direction:column;align-items:flex-start}
+      .stat-row-3{grid-template-columns:1fr 1fr!important}
+      .calc-cols{grid-template-columns:1fr!important}
+      .form-cols{grid-template-columns:1fr!important}
+
+      /* Typography scale-down */
+      h1{font-size:clamp(1.9rem,8vw,2.8rem)!important}
+      h2{font-size:clamp(1.5rem,6vw,2rem)!important}
+
+      /* Sections tighter on mobile */
+      .section{padding:2.5rem 0!important}
+      .section-sm{padding:1.5rem 0!important}
+
+      /* Hero adjustments */
+      .hero-stat-badge{display:none!important}
+
+      /* Buttons stack on mobile */
+      .btn-row{flex-direction:column;align-items:stretch!important}
+      .btn-row .btn{justify-content:center!important}
+
+      /* Card padding tighter */
+      .card{padding:1.25rem!important}
+
+      /* Footer */
+      .footer-bottom{flex-direction:column;text-align:center;gap:.4rem}
+    }
+
+    @media(max-width:480px){
+      .wrap{width:calc(100% - 1.5rem)!important}
+      .grid-2,.grid-3,.grid-4{grid-template-columns:1fr;gap:1rem}
+      .stat-row-3{grid-template-columns:1fr!important}
+      .pill-row{flex-direction:column;align-items:flex-start}
+      h1{font-size:clamp(1.7rem,7vw,2.2rem)!important}
+
+      /* Tools strip wraps nicely */
+      .tools-strip{gap:1rem!important}
+      .tools-strip > *{font-size:.78rem!important}
+
+      /* Contact items more compact */
+      .contact-item-card{padding:.85rem 1rem!important}
+    }
+
+    /* Remove the old hacky override */
+    /* (replaced by classes above) */
+
+    /* Mobile nav drawer improvements */
+    @media(max-width:800px){
+      .site-nav{position:sticky;top:0;z-index:100}
+      #nav-drawer{position:relative;width:100%}
+      #nav-drawer a{padding:.75rem 1rem;font-size:1rem;border-radius:var(--r)}
+      .nav-inner{padding:.75rem 0}
+      /* Ensure hero doesn't have top padding clash */
+      .hero-section{padding-top:2rem!important}
+    }
+
+    /* Fix hero image on mobile — cap height so it doesn't dominate */
+    @media(max-width:700px){
+      .img-cover{aspect-ratio:16/9!important}
+      .img-portrait{aspect-ratio:16/9!important}
+      /* Hide hero stat badge overlap */
+      .hero-stat-badge{bottom:.5rem!important;left:.5rem!important;right:auto}
+      /* Section heads smaller gap */
+      .section-head{margin-bottom:1.5rem!important}
+      /* Testimonial cards full width */
+      blockquote.card{margin:0}
+      /* Tools strip scrollable on very small screens */
+      .tools-strip-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:.5rem}
+    }
+
+    @media(max-width:480px){
+      /* Pricing cards full width */
+      .pricing-grid{grid-template-columns:1fr!important}
+      /* Blog card images shorter */
+      .blog-card-img{aspect-ratio:16/8!important}
+      /* Contact form fields single col */
+      .contact-form-row{grid-template-columns:1fr!important}
+      /* Stat numbers smaller */
+      .stat-num{font-size:1.8rem!important}
+      /* Platform tools wrap */
+      .platform-grid{grid-template-columns:1fr 1fr!important}
+      /* FAQ summary font */
+      .faq-item summary{font-size:.88rem!important;padding:.9rem 1rem!important}
+    }
   </style>
 </head><body>
 <nav class="site-nav">
@@ -181,7 +290,7 @@
     <div style="position:absolute;top:-100px;left:-150px;width:600px;height:600px;background:radial-gradient(circle,rgba(212,160,23,.14),transparent 65%);filter:blur(30px)"></div>
     <div style="position:absolute;bottom:0;right:-100px;width:400px;height:400px;background:radial-gradient(circle,rgba(212,160,23,.07),transparent 65%);filter:blur(40px)"></div>
   </div>
-  <div class="wrap" style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,5rem);align-items:center">
+  <div class="wrap" class="cols-2">
     <div class="reveal">
       <span class="eyebrow">Ghana-wide delivery</span>
       <h1 style="font-size:clamp(2.2rem,5vw,3.6rem);margin-bottom:1.25rem;line-height:1.05">Your brand, <span style="color:var(--gold)">printed</span> and positioned to win.</h1>
@@ -191,7 +300,7 @@
         <span class="pill"><i data-lucide="map-pin" style="width:13px;height:13px"></i> Ghana-wide delivery</span>
         <span class="pill"><i data-lucide="upload-cloud" style="width:13px;height:13px"></i> Upload your design</span>
       </div>
-      <div style="display:flex;gap:.75rem;flex-wrap:wrap">
+      <div class="btn-row" style="display:flex;gap:.75rem;flex-wrap:wrap">
         <a class="btn btn-gold" href="print.html"><i data-lucide="printer" style="width:16px;height:16px"></i> Start printing</a>
         <a class="btn btn-outline" href="services.html">See all services</a>
       </div>
@@ -251,7 +360,7 @@
 
 <!-- ABOUT / STORY -->
 <section class="section">
-  <div class="wrap" style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,6vw,5rem);align-items:center">
+  <div class="wrap" class="cols-2">
     <div class="reveal" style="position:relative">
       <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&q=80&auto=format&fit=crop" alt="Design studio workspace in Accra" class="img-cover" style="aspect-ratio:4/5"/>
       <div style="position:absolute;top:1.5rem;right:-1.5rem;background:var(--surface);border:1px solid var(--gold-border);border-radius:var(--r-lg);padding:1.1rem 1.4rem">
@@ -264,7 +373,7 @@
       <h2 style="font-size:clamp(1.6rem,2.8vw,2.2rem);margin-bottom:1.25rem">We ask "why?" before we touch a file.</h2>
       <p style="font-size:1rem;margin-bottom:1rem">Most print shops print what you give them. We do things differently. Before we produce anything, we ask what you are trying to achieve, then we design and deliver with that goal in mind.</p>
       <p>We're based in Accra and work with founders, churches, events teams, startups, and established SMEs across Ghana.</p>
-      <div style="display:flex;gap:2.5rem;margin:2rem 0;flex-wrap:wrap">
+      <div class="stat-row-3" style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin:2rem 0">
         <div><div class="stat-num">100+</div><div class="stat-label">Jobs completed</div></div>
         <div><div class="stat-num">4</div><div class="stat-label">Cities covered</div></div>
         <div><div class="stat-num">2yr</div><div class="stat-label">In business</div></div>
@@ -281,7 +390,7 @@
       <span class="eyebrow">What we do</span>
       <h2>One studio. Print, brand, and digital.</h2>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem">
+    <div class="grid-3">
       <div class="card reveal">
         <div class="card-icon"><i data-lucide="printer" style="width:22px;height:22px"></i></div>
         <h3>Printing & production</h3>
@@ -411,12 +520,12 @@
 </section>
 
 <section style="background:var(--gold);padding:clamp(2.5rem,6vw,4rem) 0">
-  <div class="wrap reveal" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1.5rem">
+  <div class="wrap reveal" class="cols-cta">
     <div>
       <p style="font-family:var(--font-display);font-size:clamp(1.3rem,2.5vw,1.9rem);font-weight:800;color:#0a0a0a;margin:0;line-height:1.2">Ready to make your brand impossible to ignore?</p>
       <p style="color:rgba(0,0,0,.6);margin:.5rem 0 0;font-size:.95rem">Upload your design, start a quote, or talk to us on WhatsApp.</p>
     </div>
-    <div style="display:flex;gap:.75rem;flex-wrap:wrap">
+    <div class="btn-row" style="display:flex;gap:.75rem;flex-wrap:wrap">
       <a class="btn" href="print.html" style="background:#0a0a0a;color:#fff">Start a quote</a>
       <a class="btn" href="contact.html" style="background:rgba(0,0,0,.15);color:#0a0a0a;border:1px solid rgba(0,0,0,.2)">Get in touch</a>
     </div>
@@ -463,7 +572,6 @@
     </div>
   </div>
 </footer>
-<style>@media(max-width:700px){.wrap>div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important}}</style>
 <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 <script>
 (function(){
