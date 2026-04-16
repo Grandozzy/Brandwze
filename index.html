@@ -92,9 +92,9 @@
     .pill{display:inline-flex;align-items:center;gap:.35rem;padding:.4rem .8rem;border-radius:var(--r-full);background:var(--gold-dim);border:1px solid var(--gold-border);color:var(--gold);font-size:.78rem;font-weight:600}
 
     /* IMAGE PANELS */
-    .img-cover{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:var(--r-lg)}
+    .img-cover{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:var(--r-lg);max-height:520px}
     .img-square{width:100%;aspect-ratio:1;object-fit:cover;border-radius:var(--r-lg)}
-    .img-portrait{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:var(--r-lg)}
+    .img-portrait{width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:var(--r-lg);max-height:420px}
 
     /* HERO */
     .hero-img-wrap{position:relative;border-radius:var(--r-lg);overflow:hidden}
@@ -254,6 +254,18 @@
       /* FAQ summary font */
       .faq-item summary{font-size:.88rem!important;padding:.9rem 1rem!important}
     }
+
+    /* Image size constraints */
+    img[style*="aspect-ratio"]{max-height:480px;width:100%}
+    @media(max-width:900px){
+      img[style*="aspect-ratio"]{max-height:380px}
+    }
+    @media(max-width:700px){
+      img[style*="aspect-ratio"]{aspect-ratio:16/9!important;max-height:260px}
+    }
+    @media(max-width:480px){
+      img[style*="aspect-ratio"]{max-height:220px}
+    }
   </style>
 </head><body>
 <nav class="site-nav">
@@ -306,7 +318,7 @@
       </div>
     </div>
     <div class="reveal d2" style="position:relative">
-      <img src="https://images.unsplash.com/photo-1572044162444-ad60f128bdea?w=800&q=80&auto=format&fit=crop" alt="Professional brand design and print materials" class="img-cover" style="aspect-ratio:4/5"/>
+      <img src="https://images.unsplash.com/photo-1572044162444-ad60f128bdea?w=800&q=80&auto=format&fit=crop" alt="Professional brand design and print materials" class="img-cover" style="aspect-ratio:3/2"/>
       <div style="position:absolute;bottom:-1rem;left:-1.5rem;background:var(--gold);border-radius:var(--r-lg);padding:1.1rem 1.4rem;box-shadow:var(--shadow)">
         <div class="stat-num" style="font-size:1.6rem;color:#0a0a0a">100+</div>
         <div style="font-size:.78rem;color:rgba(0,0,0,.7);font-weight:600;margin-top:.15rem">Jobs completed</div>
@@ -362,7 +374,7 @@
 <section class="section">
   <div class="wrap" class="cols-2">
     <div class="reveal" style="position:relative">
-      <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&q=80&auto=format&fit=crop" alt="Design studio workspace in Accra" class="img-cover" style="aspect-ratio:4/5"/>
+      <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&q=80&auto=format&fit=crop" alt="Design studio workspace in Accra" class="img-cover" style="aspect-ratio:3/2"/>
       <div style="position:absolute;top:1.5rem;right:-1.5rem;background:var(--surface);border:1px solid var(--gold-border);border-radius:var(--r-lg);padding:1.1rem 1.4rem">
         <div class="stat-num">2024</div>
         <div class="stat-label">Studio founded</div>

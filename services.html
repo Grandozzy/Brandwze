@@ -92,9 +92,9 @@
     .pill{display:inline-flex;align-items:center;gap:.35rem;padding:.4rem .8rem;border-radius:var(--r-full);background:var(--gold-dim);border:1px solid var(--gold-border);color:var(--gold);font-size:.78rem;font-weight:600}
 
     /* IMAGE PANELS */
-    .img-cover{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:var(--r-lg)}
+    .img-cover{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:var(--r-lg);max-height:520px}
     .img-square{width:100%;aspect-ratio:1;object-fit:cover;border-radius:var(--r-lg)}
-    .img-portrait{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:var(--r-lg)}
+    .img-portrait{width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:var(--r-lg);max-height:420px}
 
     /* HERO */
     .hero-img-wrap{position:relative;border-radius:var(--r-lg);overflow:hidden}
@@ -254,6 +254,18 @@
       /* FAQ summary font */
       .faq-item summary{font-size:.88rem!important;padding:.9rem 1rem!important}
     }
+
+    /* Image size constraints */
+    img[style*="aspect-ratio"]{max-height:480px;width:100%}
+    @media(max-width:900px){
+      img[style*="aspect-ratio"]{max-height:380px}
+    }
+    @media(max-width:700px){
+      img[style*="aspect-ratio"]{aspect-ratio:16/9!important;max-height:260px}
+    }
+    @media(max-width:480px){
+      img[style*="aspect-ratio"]{max-height:220px}
+    }
   </style>
 </head><body>
 <nav class="site-nav">
@@ -313,7 +325,7 @@
         </div>
       </div>
       <div class="reveal d2">
-        <img src="https://images.unsplash.com/photo-1586075010923-2dd4570fb338?w=800&q=80&auto=format&fit=crop" alt="Printed business cards and brand materials" class="img-cover" style="aspect-ratio:4/5"/>
+        <img src="https://images.unsplash.com/photo-1586075010923-2dd4570fb338?w=800&q=80&auto=format&fit=crop" alt="Printed business cards and brand materials" class="img-cover" style="aspect-ratio:3/2"/>
       </div>
     </div>
   </div>
@@ -324,7 +336,7 @@
   <div class="wrap">
     <div class="cols-2">
       <div class="reveal d1">
-        <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?w=800&q=80&auto=format&fit=crop" alt="Brand identity design work" class="img-cover" style="aspect-ratio:4/5"/>
+        <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?w=800&q=80&auto=format&fit=crop" alt="Brand identity design work" class="img-cover" style="aspect-ratio:3/2"/>
       </div>
       <div class="reveal">
         <span class="eyebrow">02. Brand</span>
@@ -363,7 +375,7 @@
         </div>
       </div>
       <div class="reveal d2">
-        <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=800&q=80&auto=format&fit=crop" alt="UI/UX design on laptop screen" class="img-cover" style="aspect-ratio:4/5"/>
+        <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=800&q=80&auto=format&fit=crop" alt="UI/UX design on laptop screen" class="img-cover" style="aspect-ratio:3/2"/>
       </div>
     </div>
   </div>
@@ -389,7 +401,7 @@
         </div>
       </div>
       <div class="reveal d2">
-        <img src="https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=800&q=80&auto=format&fit=crop" alt="Social media management and content creation" class="img-cover" style="aspect-ratio:4/5"/>
+        <img src="https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=800&q=80&auto=format&fit=crop" alt="Social media management and content creation" class="img-cover" style="aspect-ratio:3/2"/>
       </div>
     </div>
   </div>
@@ -400,7 +412,7 @@
   <div class="wrap">
     <div class="cols-2">
       <div class="reveal d1">
-        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80&auto=format&fit=crop" alt="Digital surveys and data collection" class="img-cover" style="aspect-ratio:4/5"/>
+        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80&auto=format&fit=crop" alt="Digital surveys and data collection" class="img-cover" style="aspect-ratio:3/2"/>
       </div>
       <div class="reveal">
         <span class="eyebrow">05. Surveys</span>
@@ -440,7 +452,7 @@
         </div>
       </div>
       <div class="reveal d2">
-        <img src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?w=800&q=80&auto=format&fit=crop" alt="Landing pages and marketing forms design" class="img-cover" style="aspect-ratio:4/5"/>
+        <img src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?w=800&q=80&auto=format&fit=crop" alt="Landing pages and marketing forms design" class="img-cover" style="aspect-ratio:3/2"/>
       </div>
     </div>
   </div>
